@@ -10,6 +10,9 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 cd $SCRIPTPATH/openwhisk-convertpayload-action
 mvn package
 
+cd $SCRIPTPATH/openwhisk-convertdoc-action
+mvn package
+
 cd ../openwhisk-startsession-action
 mvn package
 
@@ -24,9 +27,10 @@ wsk trigger create directionChange
 wsk trigger create distanceChange 
 
 wsk package create tank
-wsk action create tank/startSession ./openwhisk-startsession-action/target/startsession-action-0.0.1.jar 
-wsk action create tank/stopSession ./openwhisk-stopsession-action/target/stopsession-action-0.0.1.jar
-wsk action create tank/convertToPayload ./openwhisk-convertpayload-action/target/utils-0.0.1.jar 
+wsk action update tank/startSession ./openwhisk-startsession-action/target/startsession-action-0.0.1.jar 
+wsk action update tank/stopSession ./openwhisk-stopsession-action/target/stopsession-action-0.0.1.jar
+wsk action update tank/convertToPayload ./openwhisk-convertpayload-action/target/utils-0.0.1.jar 
+wsk action update tank/convertToDoc ./openwhisk-convertdoc-action/target/utils-cloudant-0.0.1.jar
 
 # we will need to listen to cloudant event
 echo "Binding cloudant"

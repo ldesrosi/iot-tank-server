@@ -1,0 +1,18 @@
+{
+  "docs": [
+    {
+      "_id": "_design/images",
+      "views": {
+        "all": {
+          "map": "function (doc) {\n  if (doc.type == \"image\") {\n    emit(doc._id, 1);\n  }\n}"
+        },
+        "to_be_analyzed": {
+          "map": "function (doc) {\n  if (doc.type == \"image\" && !doc.analysis) {\n    emit(doc._id, 1);\n  }\n}"
+        },
+        "standalone": {
+          "map": "function (doc) {\n  if (doc.type == \"image\" && !doc.video_id) {\n    emit(doc._id, 1);\n  }\n}"
+        }
+      }
+    }
+  ]
+}

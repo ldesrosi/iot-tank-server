@@ -1,0 +1,7 @@
+applications:
+- services:
+  - cloudant-for-iottank
+  name: openwhisk-iottank
+  memory: 256M
+  instances: 1
+  random-route: true

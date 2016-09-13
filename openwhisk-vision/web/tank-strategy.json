@@ -1,0 +1,1 @@
+[ { "id":1, "heading":"NORTH", "speed":100, "distance":10, "collisionStep":10, "nextStep":2 }, { "id":2, "heading":"NORTH", "speed":100, "distance":10, "collisionStep":10, "nextStep":2 }, { "id":10, "heading":"NORTH", "speed":100, "distance":10, "collisionStep":0, "nextStep":0 } ]
