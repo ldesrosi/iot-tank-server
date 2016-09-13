@@ -8,7 +8,12 @@ public class StartSessionAction {
     	
     	JsonObject result = new JsonObject();
     	result.addProperty("command", "startSession");
-    	result.addProperty("sessionId", System.currentTimeMillis());
+    	
+    	if (input.has("sessionId")) {
+    		result.addProperty("sessionId", input.get("sessionId").getAsLong());
+    	} else {
+    		result.addProperty("sessionId", System.currentTimeMillis());
+    	}
     	result.addProperty("strategy", input.get("strategy").getAsString());
      	
     	return result;
